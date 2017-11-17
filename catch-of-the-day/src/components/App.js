@@ -4,14 +4,34 @@ import Order from './Order';
 import Inventory from './Inventory';
 
 class App extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {
+            fishes: {},
+            order: {}
+        };
+
+        this.addFish = this.addFish.bind(this);
+    }
+
+    addFish(fish) {
+        const fishes = { ...this.state.fishes };
+        const timeStamp = Date.now();
+
+        fishes[`fish-${timeStamp}`] = fish;
+
+        this.setState({ fishes: fishes });
+    }
+
     render() {
         return (
             <div className="catch-of-the-day">
                 <div className="menu">
-                    <Header age="5000" tagline="I'm a new TagLine" />
+                    <Header tagline="I'm a new TagLine" />
                 </div>
                 <Order />
-                <Inventory />
+                <Inventory addFish={this.addFish} />
             </div>
         );
     }

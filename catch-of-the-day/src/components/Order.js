@@ -1,13 +1,13 @@
 import React from 'react';
 
-class Header extends React.Component {
+class Order extends React.Component {
     render() {
         return (
             <header>
-                <h1>Hello</h1>
+                <h1>Order</h1>
             </header>
         );
     }
 }
 
-export default Header;
+export default Order;
