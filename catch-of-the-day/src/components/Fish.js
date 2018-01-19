@@ -2,7 +2,25 @@ import React from 'react';
 
 class Fish extends React.Component {
     render() {
-        return <li className="menu-fish">1</li>;
+        const { details } = this.props;
+        return (
+            <li className="menu-fish">
+                <img src={details.image} alt={details.name} />
+                <h3 className="fish-name">
+                    {details.name}
+                    <span className="price">{details.price}</span>
+                </h3>
+                <p>{details.desc}</p>
+                <button
+                    type="button"
+                    onClick={e => {
+                        this.addToOrder(e);
+                    }}
+                >
+                    + Add to order
+                </button>
+            </li>
+        );
     }
 }
 

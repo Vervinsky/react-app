@@ -38,7 +38,7 @@ class App extends React.Component {
                     <Header tagline="I'm a new TagLine" />
                     <ul className="list-of-fishes">
                         {Object.keys(this.state.fishes).map(key => (
-                            <Fish details={this.state.fishes} key={key} />
+                            <Fish details={this.state.fishes[key]} key={key} />
                         ))}
                     </ul>
                 </div>
