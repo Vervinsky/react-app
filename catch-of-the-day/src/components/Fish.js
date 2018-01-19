@@ -2,7 +2,10 @@ import React from 'react';
 
 class Fish extends React.Component {
     render() {
-        const { details } = this.props;
+        const { details, index } = this.props;
+
+        const isAvailable = details.status === 'available';
+        const buttonText = isAvailable ? '+ Add to order' : 'Sold out!!!';
         return (
             <li className="menu-fish">
                 <img src={details.image} alt={details.name} />
@@ -12,12 +15,13 @@ class Fish extends React.Component {
                 </h3>
                 <p>{details.desc}</p>
                 <button
+                    disabled={!isAvailable}
                     type="button"
                     onClick={e => {
-                        this.addToOrder(e);
+                        this.props.addToOrder(index);
                     }}
                 >
-                    + Add to order
+                    {buttonText}
                 </button>
             </li>
         );
